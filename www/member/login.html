@@ -1,0 +1,57 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "로그인 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(5,2);
+?>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/mem/mem_login.js"></script>
+</head>
+<body>
+<div id="wrap" class="member">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="posting">
+			<h3 class="pageTitle">로그인</h3>
+			<div id="sign" class="section divide">
+				<form action="?" method="post" id="login-form" name="login-form" class="panel half" novalidate>
+					<input type="hidden" id="mode" name="mode" value="LOGIN">
+					<input type="hidden" id="re_url" name="re_url" value="<?=$_GET["re_url"]?>">
+					<fieldset>
+						<legend>로그인</legend>
+						<ul class="entry">
+							<li><label>
+								<strong>아이디</strong>
+								<input type="text" id="m_id" class="i_text" name="m_id">
+							</label></li>
+							<li><label>
+								<strong>패스워드</strong>
+								<input type="password" id="m_pwd" class="i_text" name="m_pwd">
+							</label></li>
+						</ul>
+						<div class="btn-group">
+							<button type="submit" id="img_login" class="btn btn-full btn-default"><span>로그인</span></button>
+						</div>
+					</fieldset>
+				</form>
+				<div class="panel half aside">
+					<h3 class="title">신규회원</h3>
+					<p class="message">
+						<span>회원가입을 하시면 고려대학교민주동우회 홈페이지의</span>
+						<strong class="text-point">모든 서비스를 편리하게</strong>
+						<span>이용하실 수 있습니다. </span>
+					</p>
+					<div class="btn-group">
+						<a href="javascript:void(0)" id="mem_register" class="btn btn-lt btn-half"><span>회원가입</span></a>
+						<a href="javascript:void(0)" id="id_find" class="btn btn-rt btn-half"><span>아이디/비밀번호 찾기</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

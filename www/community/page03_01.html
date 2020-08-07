@@ -1,0 +1,228 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "투표하기 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = [3,3];
+
+
+	include_once($GP->CLS."class.vote.php");
+	$C_Vote 	= new Vote;
+    $args = '';
+	$args['tv_idx'] = $_GET['tv_idx'];
+	$data = $C_Vote ->Vote_Info($args);
+    
+    if($_SESSION['suserlevel'] != "5") $C_Func -> put_msg_and_go ('정보 보호를 위해 CMS회원들만 투표에 참여할 수 있습니다.','page03.html');
+
+    if($data) {
+		extract($data);
+		$tv_send_msg  = $C_Func->dec_contents_view($tv_send_msg);
+		$tv_title = stripslashes($tv_title);
+		$tv_answer1 		= stripslashes($tv_answer1);
+		$tv_answer2 		= stripslashes($tv_answer2);
+		$tv_answer3 		= stripslashes($tv_answer3);
+		$tv_answer4 		= stripslashes($tv_answer4);
+		$tv_answer5 		= stripslashes($tv_answer5);
+		$tv_answer6 		= stripslashes($tv_answer6);
+		$tv_answer7 		= stripslashes($tv_answer7);
+		$tv_answer8 		= stripslashes($tv_answer8);
+		$tv_answer9 		= stripslashes($tv_answer9);
+		$tv_answer10 		= stripslashes($tv_answer10);
+
+
+		if($tv_del_flag == 'Y'){
+			$C_Func -> put_msg_and_go ('잘못된 접근입니다.','page03.html');
+		}
+	}
+
+	//투표했는지 여부 체크
+	$args = '';
+	$args['tv_idx'] = $_GET['tv_idx'];
+	$args['mb_code'] = $_SESSION['susercode'];
+	$rst  = $C_Vote ->Vote_Chk_Dual($args);
+
+	//전체참여대상인원
+	$args = '';
+	$args['tv_idx'] = $_GET['tv_idx'];
+	$arr_data  = $C_Vote ->Vote_Avg_Result($args);
+?>
+</head>
+<body>
+<div id="wrap">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+
+		<div id="article" class="">
+			<h3 class="pageTitle">투표하기</h3>
+			<form name="frm_vote" id="frm_vote" action="?" method="post">
+                <input type="hidden" name="tv_dual_choice" id="tv_dual_choice" value="<?=$tv_dual_choice?>" />
+                <input type="hidden" name="tv_idx" id="tv_idx" value="<?=$_GET['tv_idx']?>" />
+                <input type="hidden" name="mb_code" id="mb_code" value="<?=$_SESSION['susercode'] ?>" />
+                <input type="hidden" name="mode" id="mode" value="VOTE_MEM" />
+                <div class="board_view">
+                  <h4 class="subject"><?=$tv_title?>
+                    <?
+                        if($tv_dual_choice == "Y" &&  $tv_secret_vote == "Y") { echo "[ 복수선택 가능, 무기명 투표 ]"; }
+                        if($tv_dual_choice == "Y" &&  $tv_secret_vote == "N") { echo "[ 복수선택 가능 ]"; }
+                        if($tv_dual_choice == "N" &&  $tv_secret_vote == "Y") { echo "[ 무기명투표 ]"; }
+                    ?>
+                  </h4>
+
+      <dl class="info">
+       <dt>작성일</dt> <dd><?=$tv_regdate?></dd>
+       <dt>진행여부</dt><dd> <?=($tv_type == "N") ? "진행중" : "종료"; ?></dd>
+       <dt>전체 참여대상인원</dt><dd> <?=$arr_data[0]?></dd>
+       <dt>현재 투표참가인원</dt><dd> <?=$arr_data[1]?></dd>
+      </dl>
+  <div class="contents">
+  	<?=$tv_send_msg?>
+   <br /><br />
+    <?
+
+
+        if($tv_dual_choice == "Y") {
+            if($tv_answer1 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]' value='1' /> ${tv_answer1}</label></p>"; }
+            if($tv_answer2 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='2' /> ${tv_answer2}</label></p>";}
+            if($tv_answer3 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='3' /> ${tv_answer3}</label></p>";}
+            if($tv_answer4 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='4' /> ${tv_answer4}</label></p>";}
+            if($tv_answer5 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='5' /> ${tv_answer5}</label></p>";}
+            if($tv_answer6 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='6' /> ${tv_answer6}</label></p>";}
+            if($tv_answer7 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='7' /> ${tv_answer7}</label></p>";}
+            if($tv_answer8 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='8' /> ${tv_answer8}</label></p>";}
+            if($tv_answer9 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='9' /> ${tv_answer9}</label></p>";}
+            if($tv_answer10 != '') { echo "<p><label><input type='checkbox' name='tvr_sel[]'  value='10' /> ${tv_answer10}</label></p>";}
+
+
+        }else{
+            if($tv_answer1 != '') { echo "<p><label><input type='radio' name='tvr_sel' value='1' /> ${tv_answer1}</label></p>"; }
+            if($tv_answer2 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='2' /> ${tv_answer2}</label></p>";}
+            if($tv_answer3 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='3' /> ${tv_answer3}</label></p>";}
+            if($tv_answer4 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='4' /> ${tv_answer4}</label></p>";}
+            if($tv_answer5 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='5' /> ${tv_answer5}</label></p>";}
+            if($tv_answer6 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='6' /> ${tv_answer6}</label></p>";}
+            if($tv_answer7 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='7' /> ${tv_answer7}</label></p>";}
+            if($tv_answer8 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='8' /> ${tv_answer8}</label></p>";}
+            if($tv_answer9 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='9' /> ${tv_answer9}</label></p>";}
+            if($tv_answer10 != '') { echo "<p><label><input type='radio' name='tvr_sel'  value='10' /> ${tv_answer10}</label></p>";}
+
+        }
+    ?>
+    <?
+        if($tv_type == "N") {
+            if($rst['cnt'] == 0) {
+                echo "<p style='margin-top:10px;'><a href='#;' class='btn btn-middle btn-default' id='vote_submit'>투표하기</a></p>";
+             }else{
+                echo "<p style='margin-top:10px;'><a href=\"javascript:alert('이미 투표하셨습니다.');\" class='btn btn-middle btn-default'>투표하기</a></p>";
+            }
+        }else{
+            echo "<p style='margin-top:10px;'><a href=\"javascript:alert('투표가 종료되었습니다.');\" class='btn btn-middle btn-default'>투표하기</a></p>";
+        }
+    ?>
+  </div>
+ <div class="btn-group">
+   <div class="btn-lt">
+      <?php
+				//글목록버튼
+                echo "<a href=\"#\" onclick=\"javascript:location.href='page03.html?page=${page}'\" class=\"btn btn-middle btn-default\" title='목록'>목록</a>";
+				?>
+    </div>
+   <div class="btn-rt">
+      <?
+			//삭제권한(쓰기권한이 있어야 삭제 가능)
+                if($_SESSION['suserlevel']  >= 9 || $_SESSION['suserid'] == $mb_id)
+                    echo "<a href=\"#;\" onclick='vote_delete(\"${tv_idx}\")' class=\"btn btn-middle btn-gray \" title=\"삭제하기\">삭제하기</a> ";
+                if($_SESSION['suserlevel']  >= 9 || $_SESSION['suserid'] == $mb_id)
+                    echo "<a href=\"#;\" onclick='vote_end(\"${tv_idx}\")' class=\"btn btn-middle btn-gray \" title=\"종료하기\">종료하기</a> ";
+	?>
+    </div>
+  </div>
+  </form>
+</div>
+
+		</div>
+	</div>
+
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('#vote_submit').click(function(){
+				var type = $('#tv_dual_choice').val();
+
+				//복구선택 가능일경우
+				if(type == "Y") {
+					var lng = $("input[name='tvr_sel[]']:checkbox:checked").length;
+
+					if(lng == 0) {
+						alert("투표할 항목을 선택해주세요");
+						return false;
+					}
+				}else{
+					var val = $(":input:radio[name=tvr_sel]:checked").val();
+
+					if(val == undefined){
+						alert("투표할 항목을 선택해주세요");
+						return false;
+					}
+				}
+
+				if(!confirm("투표하시겠습니까?")) return;
+
+				$('#frm_vote').attr('action','./proc/vote_proc.html');
+				$('#frm_vote').submit();
+				return false;
+			});
+		});
+
+		function vote_end(tv_idx) {
+			if(!confirm("투표를 종료하시겠습니까?")) return;
+
+			$.ajax({
+				type: "POST",
+				url: "./proc/vote_proc.html",
+				data: "mode=VOTE_END&tv_idx=" + tv_idx,
+				dataType: "text",
+				success: function(msg) {
+
+					if($.trim(msg) == "true") {
+						alert("종료 되었습니다");
+						window.location.reload();
+						return false;
+					}else{
+						alert('종료에 실패하였습니다.');
+						return;
+					}
+				},
+				error: function(xhr, status, error) { alert(error); }
+			});
+		}
+
+		function vote_delete(tv_idx)
+		{
+			if(!confirm("삭제하시겠습니까?")) return;
+
+			$.ajax({
+				type: "POST",
+				url: "./proc/vote_proc.html",
+				data: "mode=VOTE_DEL&tv_idx=" + tv_idx,
+				dataType: "text",
+				success: function(msg) {
+
+					if($.trim(msg) == "true") {
+						alert("삭제되었습니다");
+						location.href="page03.html";
+						return false;
+					}else{
+						alert('삭제에 실패하였습니다.');
+						return;
+					}
+				},
+				error: function(xhr, status, error) { alert(error); }
+			});
+
+		}
+	</script>
+</body>
+</html>

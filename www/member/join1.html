@@ -1,0 +1,68 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "회원가입 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(5,1);
+?>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/mem/mem_login.js"></script>
+</head>
+<body>
+<div id="wrap" class="member">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="posting">
+			<h3 class="pageTitle">회원가입</h3>
+			<div id="sign" class="section">
+				<div class="section divide">
+					<div class="panel half">
+						<h3 class="title">개인정보 취급방침</h3>
+						<div class="agree" tabindex="0"><? include_once "agree2.txt";?></div>
+						<label><input type="checkbox" value="Y" id="agree2" name="agree2"> 위의 약관에 동의합니다.</label>
+					</div>
+					<div class="panel half">
+						<h3 class="title">이용약관</h3>
+						<div class="agree" tabindex="0"><? include_once "agree1.txt";?></div>
+						<label><input type="checkbox" value="Y" id="agree1" name="agree1"> 위의 약관에 동의합니다.</label>
+					</div>
+				</div>
+				<p class="full_consent text-center">이용약관 및 개인정보 취급방침에 <strong>모두 동의</strong>합니다. <a href="javascript:void(0)" class="btn btn-small" id="agree3">전체동의</a></p>
+				<div class="btn-group center">
+					<a href="javascript:void(0)" id="img_next" class="btn btn-middle half btn-default"><span>확인</span></a>
+					<a href="javascript:history.go(-1);" class="btn btn-middle half"><span>취소</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<form id="hd_frm" name="hd_frm" action="?" method="post">
+		<input type="hidden" name="agree" id="agree" />
+	</form>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#img_next').click(function(){
+			if($('#agree1:checked').val() == undefined){
+				alert('약관동의 하셔야 합니다');
+				return false;
+			}
+
+			if($('#agree2:checked').val() == undefined){
+				alert('개인정보 취금방침에 동의 하셔야 합니다');
+				return false;
+			}
+
+			$('#agree').val('Y');
+			$('#hd_frm').attr('action','./join2.html');
+			$('#hd_frm').submit();
+			return false;
+		});
+		$('#agree3').click(function(){
+			$("input:checkbox").prop("checked", true);
+		});
+	});
+	</script>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

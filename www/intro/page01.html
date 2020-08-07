@@ -1,0 +1,64 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "진료철학 &gt; 아삭치과";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(1,1);
+?>
+</head>
+<body>
+<div id="wrap">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<?php include_once $GP -> INC_WWW . '/location.php';?>
+	<div id="container">
+		<div id="article">
+			<div id="philosophy" class="contain">
+				<div class="picture"><img src="/public/img/img-intro-01-01.jpg" alt="" class="block" /></div>
+				<h4 class="title" id="promise">아삭치과 6가지 약속</h4>
+				<div class="philosophy-section">
+					<ul class="list">
+						<li>
+							<dl class="panel">
+								<dt class="title">양심</dt>
+								<dd class="description"><span>좋은 재료, 합리적인 비용의 양심진료를 약속합니다.</span></dd>
+							</dl>
+						</li>
+						<li>
+							<dl class="panel">
+								<dt class="title">안전</dt>
+								<dd class="description"><span>정수 시스템, UV살균, 최신소독시스템으로 </span><span>멸균, 위생관리를 철저히 합니다.</span></dd>
+							</dl>
+						</li>
+						<li>
+							<dl class="panel">
+								<dt class="title">편안함</dt>
+								<dd class="description"><span>치과에 머무르는 시간, 다녀가신 이후에도 </span><span>편안한 미소를 지을 수 있는 병원이 되겠습니다.</span></dd>
+							</dl>
+						</li>
+						<li>
+							<dl class="panel">
+								<dt class="title">소통</dt>
+								<dd class="description"><span>치아건강을 오래도록 유지할 수 있도록 노력하며, </span><span>환자의 목소리에 귀 기울입니다.</span></dd>
+							</dl>
+						</li>
+						<li>
+							<dl class="panel">
+								<dt class="title">정품</dt>
+								<dd class="description"><span>아삭치과는 정품, 정량 제품만을 사용합니다.</span></dd>
+							</dl>
+						</li>
+						<li>
+							<dl class="panel">
+								<dt class="title">전문성</dt>
+								<dd class="description"><span>전 직원 ‘구강건강 전문 인력’인 </span><span>치과 전문의, 치과위생사로 이루어져 있습니다.</span></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

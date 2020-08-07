@@ -1,0 +1,71 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "소아진료 &gt; 차암조은치과";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(5,5);
+?>
+</head>
+<body>
+<div id="wrap">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<?php include_once $GP -> INC_WWW . '/location.php';?>
+	<div id="container">
+		<div id="article">
+		
+			<div class="contain">
+			
+				<h4 class="highlight-title">아이 치아 건강을 위한 첫 단계!</h4>
+				<div class="layout-section highlight-webzine">
+					<div class="panel"><img src="/public/images/pediatric_05_01.jpg" alt="" class="block" /></div>
+					<div class="panel contents well">
+						<dl class="data-label">
+							<dt>영유아 검진이란?</dt>
+							<dd>영유아 구강검진은 국민건강보험공단에서 지원하는 검진 시스템입니다. 공단으로부터 검진대상 여부를 확인하신 후 병원에 내원하시면 아이의 구강상태를 진료 받을 수 있습니다. 또한 유치의 발달 상항과 충치 및 부정교합 등에 대하여 검진 받으실 수 있습니다.</dd>
+						</dl>
+					</div>
+				</div>
+				
+				
+				<div class="layout-section">
+					<h5 class="break-title"><span>검진 시기</span></h5>
+					<div class="display">
+						<div class="default-table">
+							<table>
+								<colgroup>
+									<col width="*" />
+									<col width="*" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">검진 시기</th>
+										<th scope="col">검진 항목</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">18~29개월(만2세)</th>
+										<td align="center" rowspan="3">진찰 및 문진표 작성, 구강보건교육</td>
+									</tr>
+									<tr>
+										<th scope="row">42~53개월(만4세)</th>
+									</tr>
+									<tr>
+										<th scope="row">54~60개월(만5세)</th>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="warning-quote">모든 검진 비용은 공단에서 부담하여 별도의 본인 부담금이 발생하지 않습니다</p>
+						<p class="warning-quote">공단에서 발송한 영유아 건강검진표를 분실하신 경우 전화문의(1577-1000) 또는<br>공단 홈페이지((http://hi.nhic.or.kr)에서 확인하실 수 있습니다. </p>
+					</div>
+				</div>
+
+			
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

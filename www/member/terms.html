@@ -1,0 +1,22 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "이용약관 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = [5,5];
+?>
+</head>
+<body>
+<div id="wrap" class="member">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="posting">
+			<h3 class="pageTitle">이용약관</h3>
+			<? include_once "agree1.txt";?>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

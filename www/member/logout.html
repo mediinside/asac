@@ -1,0 +1,43 @@
+<?php
+	session_destroy();
+	//header("Location: /");
+	$_SESSION['suseremail'] = '';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "로그아웃 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+    
+    
+    $_SESSION['suseremail'] = '';
+    $_SESSION['suserid'] = '';
+    $_SESSION['susername'] = '';
+    $_SESSION['suserphone'] = '';
+    $_SESSION['suserlevel'] = '';
+    $_SESSION['susercode'] = '';
+?>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/mem/mem_login.js"></script>
+</head>
+<body>
+<div id="wrap" class="member">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="posting">
+			<h3 class="pageTitle">로그아웃</h3>
+			<div id="sign" class="section text-center">
+				<p class="sign_result">
+					<span>고려대학교 민주동우회 홈페이지를 <br class="mb_show" />이용해 주셔서 감사합니다.</span>
+					<strong class="big">LOGOUT</strong>
+					<span>로그아웃이 정상적으로 완료되었습니다.</span>
+				</p>
+				<div class="btn-group center">
+					<a href="/member/login.html" class="btn btn-middle"><span>로그인</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

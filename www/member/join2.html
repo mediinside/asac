@@ -1,0 +1,99 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "회원가입 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(5,1);
+
+	$sel_email = $C_Func->makeSelect('email_sel', $GP -> EMAIL , $email_sel, " title='도메인 선택' class='i_small'",'직접선택');
+	$sel_mobile = $C_Func->makeSelect('mb_mobile1', $GP -> MOBILE , $mb_mobile1, " title='휴대폰 앞자리 선택' class='i_small'",':::선택:::');
+    $sex_select = $C_Func -> makeSelect_Normal('mb_sex', $GP -> MEM_SEX, $mb_sex, '', '::선택::');
+?>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/jquery.alphanumeric.js"></script>
+<script type="text/javascript" src="/js/mem/mem_join.js"></script>
+</head>
+<body>
+<div id="wrap" class="member">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="posting">
+			<h3 class="pageTitle">회원가입</h3>
+			<div id="sign" class="section">
+				<form action="?" id="frmJoin" name="frmJoin" method="post" novalidate>
+					<input type="hidden" value="MEM_REG" id="mode" name="mode">
+					<table class="entry">
+						<caption>회원가입 정보입력</caption>
+						<tbody>
+							<tr>
+								<th scope="row" class="required">아이디</th>
+								<td><input type="text" class="i_text full" title="아이디 입력" placeholder="아이디" id="mb_id" name="mb_id"></td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">이메일</th>
+								<td>
+									<input type="text" class="i_text" title="이메일 입력" placeholder="이메일" id="mb_email1" name="mb_email1">
+									<span class="empty">@</span>
+									<input type="text" class="i_text" title="이메일 입력" placeholder="도메인" id="mb_email2" name="mb_email2">
+									<select name="email_sel" id="email_sel" title="도메인 선택"><option value="">직접선택</option><option value="msn.com">MSN</option><option value="gmail.com">구글</option><option value="netian.com">네띠앙</option><option value="naver.com">네이버</option><option value="nate.com">네이트</option><option value="hanmail.net">다음(한메일)</option><option value="dreamwiz.com">드림위즈</option><option value="lycos.co.kr">라이코스</option><option value="yahoo.com">야후</option><option value="empal.com">엠팔</option><option value="orgio.net">오르지오</option><option value="unitel.co.kr">유니텔</option><option value="chol.com">천리안</option><option value="kornet.net">코넷</option><option value="korea.com">코리아닷컴</option><option value="paran.com">파란</option><option value="freechal.com">프리첼</option><option value="hanafos.com">하나포스</option><option value="hitel.net">하이텔</option><option value="hanmir.com">한미르</option><option value="hotmail.com">핫메일</option></select>								</td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">성명</th>
+								<td><input type="text" class="i_text full" title="성명 입력" placeholder="성명" id="mb_name" name="mb_name"></td>
+							</tr>
+                            <tr>
+								<th scope="row" class="required">성별</th>
+								<!--td><input type="radio" name="mb_sex" value="M"> 남
+								<input type="radio" name="mb_sex" value="W">여</td-->
+                                <td><?=$sex_select?></td>
+							</tr>
+                            <tr>
+								<th scope="row" class="required">생년월일</th>
+								<td><input type="text" class="i_text full" title="생년월일 입력" placeholder="생년월일" id="mb_birthday" name="mb_birthday"></td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">학과</th>
+								<td><input type="text" class="i_text full" title="학과 입력" placeholder="학과" id="mb_major" name="mb_major"></td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">학번</th>
+								<td><input type="text" class="i_text full" title="학번 입력" placeholder="학번" id="mb_snum" name="mb_snum"></td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">핸드폰번호</th>
+								<td>
+									<select name="mb_mobile1" id="mb_mobile1" title="휴대폰 앞자리 선택"><option value="">:::선택:::</option><option value="010">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option></select>									<span class="empty">-</span>
+									<input type="text" class="i_text" title="휴대폰 가운데자리 입력" id="mb_mobile2" name="mb_mobile2">
+									<span class="empty">-</span>
+									<input type="text" class="i_text" title="휴대폰 마지막자리 입력" id="mb_mobile3" name="mb_mobile3">
+								</td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">비밀번호</th>
+								<td>
+									<input type="password" class="i_text full" title="비밀번호 입력" placeholder="비밀번호" id="mb_pwd" name="mb_pwd">
+									<p class="explain">6~16자의 영문과 숫자조합. 대소문자, 특수문자 사용가능</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">비밀번호 확인</th>
+								<td>
+									<input type="password" class="i_text full" title="비밀번호 확인 입력" placeholder="비밀번호 확인" id="mb_pwd_ok" name="mb_pwd_ok">
+									<p class="explain">비밀번호를 한번 더 입력하여 주십시오.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="btn-group center">
+						<button type="submit" class="btn btn-middle half btn-default"><span>확인</span></button>
+						<a href="/" class="btn btn-middle btn-gray half" title="메인화면으로 돌아갑니다."><span>취소</span></a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

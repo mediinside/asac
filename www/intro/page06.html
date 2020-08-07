@@ -1,0 +1,27 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "공지사항 &gt; 아삭치과";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(1,6);
+
+    $index_page = "page06.html";
+	$query_page = "query.php";
+
+	if(!$jb_code)
+		$jb_code="10";
+?>
+</head>
+<body>
+<div id="wrap">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<?php include_once $GP -> INC_WWW . '/location.php';?>
+	<div id="container">
+		<div id="article">
+			<div class="contain"><?php include $GP -> INC_PATH ."/board_inc.php"; ?></div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

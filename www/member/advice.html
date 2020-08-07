@@ -1,0 +1,33 @@
+<?
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	$page_title = "상담결과 &gt; My Page &gt; 뿌리병원";
+	include_once $GP -> INC_WWW . '/head.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	//include_once $GP -> INC_WWW . '/inc.login_check.php';
+
+	$index_page = "advice.html";
+	$query_page = "query.php";
+
+	if(!$jb_code)
+		$jb_code="20";
+
+?>
+</head>
+
+<body class="mypage">
+	<? include_once $GP -> INC_WWW . '/header.php'; ?>
+	<div id="container">
+		<div class="contentsWrap">
+			<? include_once $GP -> INC_WWW . '/locMenu.php'; ?>
+			<div class="contents">
+				<div class="section">
+					<h1 class="pageTitle">상담결과</h1>
+					<!--게시판시작 -->
+                    <?php include $GP -> INC_PATH ."/board_inc.php"; ?>
+                    <!-- 게시판끝 -->
+			</div>
+		</div>
+	</div>
+	<? include_once $GP -> INC_WWW . '/footer.php'; ?>
+</body>
+</html>

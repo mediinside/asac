@@ -1,0 +1,26 @@
+<?
+	include_once  '../_init.php';
+	$page_title = "비밀번호 찾기 &gt; 로그인 &gt; 고려민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+?>
+</head>
+
+<body>
+	<div id="pop_wrap">
+		<div class="header">
+			<h1>비밀번호 찾기</h1>
+		</div>
+		<div class="container">
+			<p class="result">
+				<?= $_GET['msg'];?>
+				<!-- strong class="resulTxt">임시비빌번호</strong>를 회원님의 <strong class="resulTxt">이메일</strong>로<br /> 전달 받으시겠습니까?
+				<span class="txt1">비밀번호 확인 요청을 하시면, 임시비밀번호가 발급됩니다.</span -->
+			</p>
+			<div class="btn-group">
+				<a href="javascript:void(0)" onClick="window.close();" class="btn btn-small btnConfirm" target="_blank"><span>확인</span></a>
+			</div>
+		</div>
+		<button type="button" class="pop_close ntxt" onClick="window.close();"><span>닫기</span></button>
+	</div>
+</body>
+</html>

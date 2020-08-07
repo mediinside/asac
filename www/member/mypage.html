@@ -1,0 +1,134 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "회원정보수정 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+	include_once $GP -> INC_WWW . '/inc.login_check.php';
+	$locArr = array(5,1);
+
+	include_once($GP -> CLS."/class.member.php");
+	$C_Member 	= new Member;
+
+	$args = "";
+	$args['mb_code'] = $_SESSION['susercode'];
+	$data = $C_Member->Mem_Info($args);
+
+	if($data) {
+		extract($data);
+
+		$arr_post = explode("-", $mb_zip_code);
+		$mb_post1 = $arr_post[0];
+		$mb_post2 = $arr_post[1];
+
+		$arr_mobile = explode("-", $mb_mobile);
+		$mb_mobile1 = $arr_mobile[0];
+		$mb_mobile2 = $arr_mobile[1];
+		$mb_mobile3 = $arr_mobile[2];
+
+
+		$arr_email = explode("@", $mb_email);
+		$mb_email1 = $arr_email[0];
+		$mb_email2 = $arr_email[1];
+
+		$sel_mobile = $C_Func -> makeSelect('mb_mobile1', $GP -> MOBILE, $mb_mobile1, '  title="휴대폰 앞자리 선택" style="width:110px;" ', '::선택::');
+		$sel_email = $C_Func->makeSelect('email_sel', $GP -> EMAIL , $mb_email2, "'",'직접선택');
+        $sex_select = $C_Func -> makeSelect_Normal('mb_sex', $GP -> MEM_SEX, $mb_sex, '', '::선택::');
+	}
+?>
+</head>
+<body>
+<div id="wrap" class="member">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article">
+			<h3 class="pageTitle">회원정보수정</h3>
+			<div id="sign" class="section">
+				<form action="?" id="frmJoin" name="frmJoin" method="post" novalidate>
+					<input type="hidden" value="MEM_MODIFY" id="mode" name="mode">
+					<input type="hidden" name="old_email" id="old_id" value="<?=$mb_id?>" />
+					<input type="hidden" name="old_email" id="old_email" value="<?=$mb_email?>" />
+					<input type="hidden" name="mb_code" id="mb_code" value="<?=$mb_code?>" />
+					<table class="entry">
+						<caption>회원정보 수정</caption>
+						<tbody>
+							<tr>
+								<th scope="row" class="required">이메일</th>
+								<td>
+									<input type="text" class="i_text" title="이메일 입력" placeholder="아이디" id="mb_email1" name="mb_email1" value="<?=$mb_email1?>" />
+									<span class="empty">@</span>
+									<input type="text" class="i_text" title="이메일 입력" placeholder="도메인" id="mb_email2" name="mb_email2" value="<?=$mb_email2?>" />
+									<?=$sel_email?>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row" class="required">성명</th>
+								<td>
+									<input type="text" class="i_text full" title="성명 입력" placeholder="성명" value="<?=$mb_name?>" id="mb_name" name="mb_name" />
+								</td>
+							</tr>
+                            <tr>
+							<th><span>*</span>생년월일</th>
+							<td>
+							<input type="text" class="i_text full" size="25" name="mb_birthday" id="mb_birthday" value="<?=$mb_birthday?>"  />
+							</td>
+						</tr>
+							<tr>
+								<th scope="row" class="required">핸드폰번호</th>
+								<td>
+									<?=$sel_mobile?>
+									<span class="empty">-</span>
+									<input type="text" class="i_text" title="휴대폰 가운데자리 입력" value="<?=$mb_mobile2?>" id="mb_mobile2" name="mb_mobile2" />
+									<span class="empty">-</span>
+									<input type="text" class="i_text" title="휴대폰 마지막자리 입력" value="<?=$mb_mobile3?>" id="mb_mobile3" name="mb_mobile3" />
+								</td>
+							</tr>
+                            <tr>
+							<th><span>*</span>성별</th>
+							<!--td>
+								<input type="radio" name="mb_sex" value="M" <? if($mb_sex == 'M'){ echo "checked"; } ?> />남
+								<input type="radio" name="mb_sex" value="W" <? if($mb_sex == 'W'){ echo "checked"; } ?> />여
+							</td-->
+                            <td><?=$sex_select?></td>
+						</tr>
+                        <tr>
+							<th><span>*</span>학과</th>
+							<td>
+							<input type="text" class="i_text full" size="25" name="mb_major" id="mb_major" value="<?=$mb_major?>"  />
+							</td>
+						</tr>
+                        <tr>
+							<th><span>*</span>학번</th>
+							<td>
+							<input type="text" class="i_text full" size="25" name="mb_snum" id="mb_snum" value="<?=$mb_snum?>"  />
+							</td>
+						</tr>
+							<tr>
+								<th scope="row" class="required">현재 비밀번호</th>
+								<td>
+									<input type="password" class="i_text full" title="비밀번호 입력" placeholder="비밀번호" id="mb_pwd" name="mb_pwd" />
+									<p class="explain">6~16자의 영문과 숫자조합. 대소문자, 특수문자 사용가능</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				<div class="btn-group center">
+					<a href="javascript:void(0)" id="btn_submit" class="btn btn-middle half btn-default"><span>수정</span></a>
+					<a href="javascript:void(0)" id="btn_cancel" class="btn btn-middle half btn-gray"><span>취소</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+<script type='text/javascript' src='/js/jquery.alphanumeric.js'></script>
+<script type='text/javascript' src='/js/jquery.validate.js'></script>
+<script type='text/javascript' src='/js/mem/mem_page.js'></script>
+<script type="text/javascript">
+	fn.init = function(){
+		$('#location').find('.next').show();
+	};
+</script>
+</body>
+</html>

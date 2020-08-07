@@ -1,0 +1,113 @@
+<?php
+	include_once  './_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "차암조은치과의원";
+	include_once $GP -> INC_WWW . '/head.php';
+?>
+<script type="text/javascript" src="/js/main_ui.js"></script>
+</head>
+<body>
+<div id="wrap" class="main">
+	<div id="main">
+		<div class="display">
+			<?php include_once $GP -> INC_WWW . '/header.php';?>
+			<div id="container">
+				<div id="main-visual">
+					<div class="contain">
+						<ul class="swiper" data-mode="fade" data-auto="true" data-auto-controls="true" data-controls="true" data-pager-type="short" data-pager="true" data-on-slide-before="slider.mainVisualInit">
+							<li>
+								<div class="background"><img src="/public/images/bg-main-visual-01.jpg" alt="" class="block" /></div>
+								<div class="contain">
+									<p>
+										<span class="text-slim">가족을 진료하는 마음으로</span> <br />
+										<strong class="text-white">최선을 다해</strong>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="background"><img src="/public/images/bg-main-visual-02.jpg" alt="" class="block" /></div>
+								<div class="contain">
+									<p>
+										<span class="text-slim">내 이처럼 소중히,</span> <br />
+										<strong class="text-white">치아보존을 최우선으로</strong>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="background"><img src="/public/images/bg-main-visual-03.jpg" alt="" class="block" /></div>
+								<div class="contain">
+									<p>
+										<span class="text-slim">소아부터 노인까지, </span> <br />
+										<strong class="text-white">우리 가족 치아 주치의</strong>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="main-quick">
+					<div class="panel">
+						<ul class="row">
+							<li><a href="/intro/page03.html">
+								<i class="ip-icon-guide"></i>
+								<span>진료안내</span>
+							</a></li>
+							<li><a href="/intro/page02.html">
+								<i class="ip-icon-greeting"></i>
+								<span>인사말</span>
+							</a></li>
+							<li><a href="/intro/page01.html">
+								<i class="ip-icon-philosophy"></i>
+								<span>진료철학</span>
+							</a></li>
+						</ul>
+						<ul class="row">
+							<li><a href="/intro/page05.html">
+								<i class="ip-icon-location"></i>
+								<span>오시는 길</span>
+							</a></li>
+							<li><a href="/toothy/page01.html">
+								<i class="ip-icon-toothy"></i>
+								<span>자연치아 살리기</span>
+							</a></li>
+							<li><a href="/conserv/page01.html">
+								<i class="ip-icon-conservation"></i>
+								<span>보존치료</span>
+							</a></li>
+						</ul>
+						<ul class="row">
+							<li><a href="/implant/page01.html">
+								<i class="ip-icon-implant"></i>
+								<span>임플란트</span>
+							</a></li>
+							<li><a href="/pediatric/page01.html">
+								<i class="ip-icon-pediatric"></i>
+								<span>소아진료</span>
+							</a></li>
+							<li><a href="/aesthetic/page01.html">
+								<i class="ip-icon-aesthetic"></i>
+								<span>심미치료</span>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php include_once $GP -> INC_WWW . '/footer.php';?>
+		</div>
+	</div>
+</div>
+<? include_once $GP -> INC_WWW . '/footer.php'; ?>
+    	<?
+		//팝업관련 꼭 넣어주세요
+		$mobile_agent = '/(iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)/';
+		$pop_gubun = "D";
+
+		// preg_match() 함수를 이용해 모바일 기기로 접속하였는지 확인
+		if(preg_match($mobile_agent, $_SERVER['HTTP_USER_AGENT'])) {
+			 include $_SERVER[DOCUMENT_ROOT]."/popup/popup_layer.php";
+		}else{
+			 include $_SERVER[DOCUMENT_ROOT]."/popup/popup_script.php";
+		}
+	?>
+</body>
+</html>

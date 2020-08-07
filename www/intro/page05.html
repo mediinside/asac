@@ -1,0 +1,169 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "오시는길 &gt; 아삭치과";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(1,5);
+?>
+</head>
+<body>
+<div id="wrap">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<?php include_once $GP -> INC_WWW . '/location.php';?>
+	<div id="container">
+		<div id="article">
+			<div id="location-map" class="contain">
+				<div class="layout-section">
+					<div class="section directions">
+						<div id="map" style="width: 100%;height:400px;"></div>
+						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3556fb64db42cf050189ae4ffd6b0d8d&libraries=services"></script>
+						<script>
+
+
+
+
+							var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+								mapOption = {
+									center: new kakao.maps.LatLng(37.496595, 127.029182),
+									level: 1// 지도의 확대 레벨
+								};
+
+							var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+
+
+
+
+							var arriveSrc = '/public/img/map_parking.png', // 도착 마커이미지 주소입니다
+							arriveSize = new kakao.maps.Size(165, 75), // 도착 마커이미지의 크기입니다
+							arriveOption = {
+								offset: new kakao.maps.Point(-20, 0) // 도착 마커이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
+							};
+
+							// 도착 마커 이미지를 생성합니다
+							var arriveImage = new kakao.maps.MarkerImage(arriveSrc, arriveSize, arriveOption);
+
+
+							// 도착 마커가 표시될 위치입니다
+							var arrivePosition = new kakao.maps.LatLng(37.496593, 127.02966);
+
+							// 도착 마커를 생성합니다
+							var arriveMarker = new kakao.maps.Marker({
+								map: map, // 도착 마커가 지도 위에 표시되도록 설정합니다
+								position: arrivePosition,
+								//draggable: true, // 도착 마커가 드래그 가능하도록 설정합니다
+								//image: arriveImage // 도착 마커이미지를 설정합니다
+							});
+
+							var arriveiwContent = '<div style="padding:5px; font-size: 10px;">비전타워주차장</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+								arriveiwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+
+							// 출발 마커를 생성합니다
+							var arriveMarker = new kakao.maps.Marker({
+								map: map, // 출발 마커가 지도 위에 표시되도록 설정합니다
+								position: arrivePosition,
+								//draggable: true, // 출발 마커가 드래그 가능하도록 설정합니다
+								//image: startImage // 출발 마커이미지를 설정합니다
+							});
+
+							var arriveinfowindow = new kakao.maps.InfoWindow({
+								position : arriveiwPosition,
+								content : arriveiwContent
+							});
+
+
+							arriveinfowindow.open(map, arriveMarker);
+
+
+
+							var startSrc = '/public/img/map_asac.png', // 출발 마커이미지의 주소입니다
+								startSize = new kakao.maps.Size(99, 45), // 출발 마커이미지의 크기입니다
+								startOption = {
+									offset: new kakao.maps.Point(-10, -10) // 출발 마커이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
+								};
+
+							// 출발 마커 이미지를 생성합니다
+							var startImage = new kakao.maps.MarkerImage(startSrc, startSize, startOption);
+
+
+							// 출발 마커가 표시될 위치입니다
+							var startPosition = new kakao.maps.LatLng(37.496395, 127.029182);
+
+							var startiwContent = '<div style="padding:5px; font-size: 10px;">아삭치과</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+								startiwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+
+							// 출발 마커를 생성합니다
+							var startMarker = new kakao.maps.Marker({
+								map: map, // 출발 마커가 지도 위에 표시되도록 설정합니다
+								position: startPosition,
+								//draggable: true, // 출발 마커가 드래그 가능하도록 설정합니다
+								//image: startImage // 출발 마커이미지를 설정합니다
+							});
+
+							var startinfowindow = new kakao.maps.InfoWindow({
+								position : startiwPosition,
+								content : startiwContent
+							});
+
+
+							startinfowindow.open(map, startMarker);
+
+
+
+
+
+						</script>
+						<dl class="address-info">
+							<dt>주소</dt><dd> 서울시 강남구 역삼동 826-3 3층 / 서울시 강남구 강남대로84길 6 역삼빌딩 3층</dd>
+							<dt>전화번호</dt><dd>02.557.2835</dd>
+							<dt>주차안내</dt><dd>“비전타워” 주차장 이용 / 주차권 발급</dd>
+						</dl>
+					</div>
+				</div>
+
+
+
+				<!-- <div class="section traffic">
+					<ul>
+						<li>
+							<div class="panel">
+								<div class="picture"><img src="/public/img/img-intro-bus.jpg" alt="" class="block" /></div>
+								<dl class="process">
+									<dt class="type">버스로 오시는 길</dt>
+									<dd class="description">
+										<ul>
+											<li>
+												<em class="object">
+													<strong class="normal-bus">일반</strong>
+													<span>81번</span>
+												</em>
+												<span class="detail">에드워드 정류장 하차 후 아삭치과 까지 59m 걷기</span>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</li>
+					</ul>
+				</div> -->
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
+
+<!-- 3. 실행 스크립트 -->
+<script charset="UTF-8">
+	fn.rtime,fn.timeout=!1,fn.delta=200,fn.locationMap=new daum.roughmap.Lander({timestamp:"1519967401869",key:"nzwa"}),fn.locationMapReload=function(){new Date-fn.rtime<fn.delta?setTimeout(fn.locationMapReload,fn.delta):($(".directions").find(".map").empty(),fn.timeout=!1,fn.locationMap.renderMap(),fn.locationMap.setMarker())},fn.locationMap.render(),fn.resize=function(){fn.rtime=new Date,!1===fn.timeout&&(fn.timeout=!0,setTimeout(fn.locationMapReload,fn.delta))},$(document).ready(function(){$(".address-map").click(function(){$(this).addClass("on")}),$(".address-map").mouseleave(function(){$(this).removeClass("on")})});
+</script>
+</body>
+</html>

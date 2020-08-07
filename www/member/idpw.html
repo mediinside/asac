@@ -1,0 +1,49 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "로그인 &gt; 고려대학교 민주동우회";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(5,3);
+?>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/mem/mem_login.js"></script>
+</head>
+<body>
+<div id="wrap" class="member">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="posting">
+			<h3 class="pageTitle">로그인</h3>
+			<div id="sign" class="section divide">
+				<form name="find-id-form" id="find-id-form" class="panel half" method="post" action="?">
+					<h3 class="title">아이디 찾기</h3>
+					<ul class="entry">
+						<li><input type="text" class="i_text" title="이름 입력" placeholder="이름" id="mb_name" name="mb_name"></li>
+						<li><input type="text" class="i_text" title="이메일 입력" placeholder="이메일" id="mb_email" name="mb_email"></li>
+					</ul>
+					<div class="btn-group">
+						<a href="javascript:void(0)" id="id_find" class="btn btn-full"><span>아이디 찾기</span></a>
+					</div>
+				</form>
+				<form name="find-pw-form" id="find-pw-form" class="panel half" method="post" action="?">
+					<h3 class="title">패스워드 찾기</h3>
+					<ul class="entry">
+						<li><input type="text" class="i_text" title="아이디 입력" placeholder="아이디" id="mb_id" name="mb_id"></li>
+						<li><input type="text" class="i_text" title="핸드폰 입력" placeholder="핸드폰" id="mb_mobile" name="mb_mobile"></li>
+					</ul>
+					<div class="btn-group">
+						<a href="javascript:void(0)" id="pwd_find" class="btn btn-full"><span>비밀번호 찾기</span></a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/jquery.alphanumeric.js"></script>
+<script type="text/javascript" src="/js/admin/common.js"></script>
+<script type="text/javascript" src="/js/mem/mem_find.js"></script>
+</body>
+</html>

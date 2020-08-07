@@ -1,0 +1,82 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "진료안내 &gt; 아삭치과";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(1,3);
+?>
+</head>
+<body>
+<div id="wrap">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<?php include_once $GP -> INC_WWW . '/location.php';?>
+	<div id="container">
+		<div id="article">
+			<div id="treat-guide" class="contain">
+				<div class="section">
+					<h4 class="break-title"><span>진료과목</span></h4>
+					<ul class="treat-list">
+						<li>
+							<i class="ip-icon-treat-toothy"></i>
+							<span class="caption">자연치아살리기</span>
+						</li>
+						<li>
+							<i class="ip-icon-treat-conserv"></i>
+							<span class="caption">보존치료</span>
+						</li>
+						<li>
+							<i class="ip-icon-treat-implant"></i>
+							<span class="caption">임플란트</span>
+						</li>
+						<li>
+							<i class="ip-icon-treat-aesthetic"></i>
+							<span class="caption">심미치료</span>
+						</li>
+					</ul>
+				</div>
+				<div class="section">
+					<h4 class="break-title"><span>진료시간</span></h4>
+					<div class="schedule">
+						<table>
+							<colgroup>
+								<col width="50%" />
+								<col width="50%" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">요일</th>
+									<th scope="col">진료시간</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>월/수/금</td>
+									<td>오전 10 : 00 ~ 오후 7 : 00</td>
+								</tr>
+								<tr>
+									<td>화/목<br/>(야간진료)</td>
+									<td>오전 10 : 00 ~ 오후 9 : 00</td>
+								</tr>
+								<tr>
+									<td>토요일</td>
+									<td>오전 10 : 00 ~ 오후 2 : 00</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="2">*점심시간 오후 1시 ~ 2시, 일요일 및 공휴일은 휴진입니다.</td>
+								</tr>
+								<tr>
+									<td colspan="2"><strong>02.557.2835</strong></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+</body>
+</html>

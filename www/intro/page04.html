@@ -1,0 +1,89 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "둘러보기 &gt; 아삭치과";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(1,4);
+?>
+</head>
+<body>
+<div id="wrap">
+	<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<?php include_once $GP -> INC_WWW . '/location.php';?>
+	<div id="container">
+		<div id="article">
+			<div id="explore" class="contain">
+				<div id="explore-display">
+					<ul class="swiper" data-controls="true" data-control-prefix="explore" data-pager="true" data-pager-custom="#explore-pager">
+						<li><div class="picture"><img src="/public/img/intro_04_01.jpg" alt="" class="block" /></div><p class="caption">대기실1</p></li>
+						<li><div class="picture"><img src="/public/img/intro_04_08.jpg" alt="" class="block" /></div><p class="caption">대기실2</p></li>
+						<li><div class="picture"><img src="/public/img/intro_04_02.jpg" alt="" class="block" /></div><p class="caption">상담실</p></li>
+						<li><div class="picture"><img src="/public/img/intro_04_03.jpg" alt="" class="block" /></div><p class="caption">수술실1</p></li>
+						<li><div class="picture"><img src="/public/img/intro_04_04.jpg" alt="" class="block" /></div><p class="caption">수술실2</p></li>
+						<li><div class="picture"><img src="/public/img/intro_04_05.jpg" alt="" class="block" /></div><p class="caption">X-RAY</p></li>
+						<li><div class="picture"><img src="/public/img/intro_04_06.jpg" alt="" class="block" /></div><p class="caption">진료실1</p></li>
+						<li><div class="picture"><img src="/public/img/intro_04_07.jpg" alt="" class="block" /></div><p class="caption">진료실2</p></li>
+					</ul>
+				</div>
+				<!-- <div id="explore-pager" class="bx-pager bx-default-pager">
+					<ul class="swiper" data-controls="true" data-control-prefix="explore-pager" data-slide-width="400" data-min-slides="4" data-max-slides="4">
+						<li><a href="javascript:void(0)" data-slide-index="0"><img src="/public/img/intro_04_01.jpg" alt="" class="block" /></a></li>
+						<li><a href="javascript:void(0)" data-slide-index="1"><img src="/public/img/intro_04_08.jpg" alt="" class="block" /></a></li>
+						<li><a href="javascript:void(0)" data-slide-index="2"><img src="/public/img/intro_04_02.jpg" alt="" class="block" /></a></li>
+						<li><a href="javascript:void(0)" data-slide-index="3"><img src="/public/img/intro_04_03.jpg" alt="" class="block" /></a></li>
+						<li><a href="javascript:void(0)" data-slide-index="4"><img src="/public/img/intro_04_04.jpg" alt="" class="block" /></a></li>
+						<li><a href="javascript:void(0)" data-slide-index="5"><img src="/public/img/intro_04_05.jpg" alt="" class="block" /></a></li>
+						<li><a href="javascript:void(0)" data-slide-index="6"><img src="/public/img/intro_04_06.jpg" alt="" class="block" /></a></li>
+						<li><a href="javascript:void(0)" data-slide-index="7"><img src="/public/img/intro_04_07.jpg" alt="" class="block" /></a></li>
+
+					</ul>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</div>
+<script type="text/javascript">/*
+	fn.explorePager = function() {
+		var e = $("#explore-pager").find(".swiper");
+		switch (slider.item["explore-pager"] && slider.item["explore-pager"].destroySlider(), co.device) {
+			case "tb":
+				e.data({
+					minSlides: 3,
+					maxSlides: 3
+				});
+				break;
+			case "mb":
+				e.data({
+					minSlides: 2,
+					maxSlides: 2
+				});
+				break;
+			default:
+				e.data({
+					minSlides: 4,
+					maxSlides: 4
+				})
+		}
+		var i = e.data();
+		console.log(slider.item["explore-pager"])
+		switch (co.device) {
+			case "tb":
+				i.minSlides = 3, i.maxSlides = 3;
+				break;
+			case "mb":
+				i.minSlides = 2, i.maxSlides = 2;
+				break;
+			default:
+				i.minSlides = 4, i.maxSlides = 4
+		}
+		slider.item["explore-pager"] = e.bxSlider(fn.sliderOption(e, i))
+		console.log(i)
+	}, fn.init = function() {
+		fn.explorePager()
+	}, fn.resize = function() {
+		co.respond && fn.explorePager()
+	};*/
+</script>
+</body>
+</html>

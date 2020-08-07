@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+/*
+Nanum Gothic
+Regular(400)
+Bold(700)
+ExtraBold(800)
+
+Nanum Barun Gothic
+UltraLight(200)
+Light(300)
+Regular(400)
+Bold(700)
+
+Nanum Myeongjo
+Regular(400)
+Bold(600)
+ExtraBold(700)
+
+Noto Sans KR
+Thin(100)
+Light(300)
+Regular(400)
+Medium(500)
+Bold(700)
+Black(800)
+
+-webkit-overflow-scrolling:touch;
+*/
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+
+html,body {width:100%;height:100%;zoom:1;}
+body {font-family:'Nanum Gothic','나눔 고딕','dotum','돋움',sans-serif;font-size:16px;font-weight:normal;white-space:normal;word-wrap:break-word;word-break:keep-all;}
+* {
+position:relative;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-tap-highlight-color: rgba(0,0,0,.2);
+}
+* {margin:0;padding:0;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,button,p,blockquote,th,td {margin:0;padding:0;-webkit-text-size-adjust:none;}
+img,fieldset {border:0;}
+h1,h2,h3,h4,h5 {font-size:100%;}
+ul,ol,li {list-style:none;}
+hr {display:none;}
+legend,caption {display:none;clear:both;}
+table {width:100%;border-collapse:collapse;border:0;}
+table, thead, tbody, tfoot, tr, th, td {position:static;}
+textarea,input, button {/* outline-color:-moz-use-text-color;outline-style:none;outline-width:medium; */-moz-border-radius:0px;-webkit-border-radius:0px;border-radius:0px;}
+textarea {resize:none;}
+label {cursor:pointer;}
+label,textarea,input,select,button {vertical-align:middle;}
+pre {overflow-x:scroll;}
+button {overflow:visible;cursor:pointer;background:none;border:0;}
+button[disabled="disabled"] {cursor:default;}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {margin:0;appearance:none;-webkit-appearance:none;-moz-appearance:none;}
+
+/* a link setting */
+a, a:link {text-decoration:none;}
+a,button,select,input {/* outline-color:-moz-use-text-color;outline-style:none;outline-width:medium; */font-family:inherit;}
+
+/* text transform */
+.tup {text-transform:uppercase;}
+.tcp {text-transform:capitalize;}
+
+/* etc default setting */
+.hidden {visibility:hidden;}
+.none {display:none !important;}
+.ntxt > span {position:absolute;top:0;left:0;display:block;width:100%;height:100%;overflow:hidden;visibility:hidden;}
+.hide {visibility:hidden;position:absolute;font-size:0;line-height:0;}
+
+.text-left {text-align:left;}
+.text-center {text-align:center;}
+.text-right {text-align:right;}
+.text-ir {display:block;position:absolute;margin:-1px;padding:0;width:1px;height:1px;border:0;clip:rect(0 0 0 0);overflow:hidden;}
+
+.skip-nav li {}
+.skip-nav li a {display:block;position:fixed;top:-100%;left:0;width:100%;padding:15px 0;background:#222;color:#fff;font-size:1em;line-height:30px;text-align:center;z-index:50000;outline:0;}
+.skip-nav li a:focus {top:0;}
+
+#ie-version {position:fixed;top:0;left:0;width:100%;padding:18px 0 20px;background:#65b6f5;text-align:center;z-index:9999;color:#fff;font-size:15px;}
+#ie-version a {display:inline-block;padding:4px 5px 5px;color:#fff;border:1px solid #fff;}
+#ie-version .version-close {position:absolute;top:5px;right:15px;color:#fff;}
+
+.pc_show {display:block !important;}
+.tb_show {display:none !important;}
+.mb_show {display:none !important;}
+
+.pc_hide {display:none !important;}
+.tb_hide {display:block !important;}
+.mb_hide {display:block !important;}
+
+[class*="ip-icon-"] {display:inline-block;}
+[class*="ip-icon-"]:before {content:'';display:block;background-repeat:no-repeat;background-image:url(../img/icon-pack.png);background-size:1000px 1000px;}
+
+body {z-index:1;}
+@media all and (max-width:1319px) {
+	body {z-index:2;}
+	.pc_show {display:none !important;}
+	.tb_show {display:block !important;}
+	.mb_show {display:none !important;}
+
+	.pc_hide {display:block !important;}
+	.tb_hide {display:none !important;}
+	.mb_hide {display:block !important;}
+}
+@media all and (max-width:759px) {
+	[class*="ip-icon-"]:before {background-size:500px 500px;}
+
+	body {z-index:3;}
+	.pc_show {display:none !important;}
+	.tb_show {display:none !important;}
+	.mb_show {display:block !important;}
+
+	.pc_hide {display:block !important;}
+	.tb_hide {display:block !important;}
+	.mb_hide {display:none !important;}
+}
